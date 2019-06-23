@@ -1,38 +1,32 @@
 package scrap.heap.refactor;
 
 public class App {
+		
     public String getGreeting() {
         return "Hello world.";
     }
 
-    public static void main(String[] args) {
-
-         //Place birthday party orders
-         order("red", "mylar", "4", "chocolate", "chocolate", "circle", "large", "brown" );
-         order("blue", "latex", "7", "Vanilla", "chocelate", "square", "med", "brown" );
-         order("yellow", "mylar", "4", "vanilla", "vanilla", "square", "small", "yellow" );
-
+	public static void main(String[] args) throws Exception {
+    	
+		// Order 1
+		OrderDetails orderDetails = new OrderDetails();
+		orderDetails.addAvailableItem(new Balloons(BalloonColor.RED, BalloonMaterial.MYLAR, 4));
+		orderDetails.addAvailableItem(new Cake(CakeFlavor.CHOCOLATE, CakeFrostingFlavor.CHOCOLATE, 
+			 		CakeShape.CIRCLE, CakeSize.LARGE, CakeColor.BROWN));
+		orderDetails.order();
+		
+		// Order 2
+		OrderDetails orderDetails2 = new OrderDetails();
+		orderDetails2.addAvailableItem(new Balloons(BalloonColor.BLUE, BalloonMaterial.LATEX, 7));
+		orderDetails2.addAvailableItem(new Cake(CakeFlavor.CHOCOLATE, CakeFrostingFlavor.CHOCOLATE, 
+	 			 		CakeShape.CIRCLE, CakeSize.LARGE, CakeColor.BROWN));
+		orderDetails2.order();
+		
+		// Order 3
+		OrderDetails orderDetails3 = new OrderDetails();
+		orderDetails3.addAvailableItem(new Balloons(BalloonColor.YELLOw, BalloonMaterial.MYLAR, 4));
+		orderDetails3.addAvailableItem(new Cake(CakeFlavor.VANILLA, CakeFrostingFlavor.VANILLA, 
+	 			 		CakeShape.SQUARE, CakeSize.SMALL, CakeColor.YELLOW));
+		orderDetails3.order();
     }
-
-    private static void order(String balloonColor, String material, String number, String flavor, String frostingFlavor, String shape, String size, String cakeColor){
-
-        orderBalloons(balloonColor, material, number);
-
-        orderCake(frostingFlavor, flavor, shape, size, cakeColor);
-    }
-
-    private static void orderBalloons(String balloonColor, String material, String number){
-
-        //for the purposes of this exercise, pretend this method works and adds balloons to the order
-        System.out.println("Balloons ordered; " + balloonColor + ", " + material  + ", " + number);
-
-    }
-
-    private static void orderCake(String flavor, String frostingFlavor, String shape, String size, String cakeColor){
-
-        //for the purposes of this exercise, pretend that this method adds a cake to the order
-        System.out.println("cake ordered; " + flavor + ", " + frostingFlavor  + ", " + shape + ", " + size + ", " + cakeColor);
-
-    }
-
 }
